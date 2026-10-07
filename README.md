@@ -1,4 +1,3 @@
-```markdown
 # 折磨王注册（TortureKing Register）
 
 > **Register. If you can.**
@@ -48,8 +47,6 @@
 
 ## 📁 项目结构
 
-```
-
 TortureKingRegister/
 ├── index.php          首页（一本正经的门户落地页）
 ├── register.php       注册页（地狱入口）
@@ -68,8 +65,6 @@ TortureKingRegister/
 ├── users.json     用户数据（故意明文存储）
 └── settings.json  系统配置
 
-```
-
 ---
 
 ## 🚀 部署方法
@@ -83,11 +78,7 @@ TortureKingRegister/
 ### 部署步骤
 
 1. 把代码上传到网站根目录（或子目录）。
-2. 给 `data/` 目录写权限：
-   ```bash
-   chmod -R 755 data/
-```
-
+2. 给 data 目录755或777权限：
 3. 访问 http://你的域名/index.php。
 4. 首次访问会自动生成 data/users.json 和 data/settings.json。
 
@@ -95,10 +86,9 @@ TortureKingRegister/
 
 写死在 functions.php 里：
 
-```php
+php
 define('ADMIN_USERNAME', 'admin');
 define('ADMIN_PASSWORD', 'admin123');
-```
 
 管理后台：admin_login.php
 
