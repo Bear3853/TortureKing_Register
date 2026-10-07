@@ -64,7 +64,7 @@ TortureKingRegister/
 ├── style.css          全站样式
 ├── add_docs_nav.sh    给导航栏批量添加"文档中心"入口的脚本
 └── data/
-├── users.json     用户数据（故意明文存储）
+├── users.json     用户数据
 └── settings.json  系统配置
 
 ```
