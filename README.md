@@ -88,9 +88,7 @@ TortureKingRegister/
 3. 访问 http://你的域名/index.php。
 4. 首次访问会自动生成 data/users.json 和 data/settings.json。
 
-管理员默认账号
-
-写死在 functions.php 里：
+管理员默认账号写死在 functions.php 里：
 
 ```php
 define('ADMIN_USERNAME', 'admin');
