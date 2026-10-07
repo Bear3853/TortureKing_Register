@@ -1,17 +1,17 @@
 # 折磨王注册（TortureKing Register）
 
-> **Register. If you can.**
+> **Register. If you can.**<br>
 > 一个伪装成正常网站的注册系统 —— 每条隐藏规则都为折磨用户而生。
-
-**🌐 Language / 语言：** 中文 · [English](README.en.md)
 
 ---
 
 ## 📢 项目介绍
 
-**折磨王注册（TortureKing Register）** 是一个整蛊项目。表面上，它看起来完全是个正经的现代 SaaS 产品——白色卡片、圆角输入框、蓝色主按钮，甚至还有个一本正经的品牌名"星云通行证"。但在它的内部，藏着一堆反人类的隐藏规则，专治各种不服。
+**折磨王注册（TortureKing Register）** 是一个整蛊项目。<br>
+表面上，它看起来完全是个正经的现代 SaaS 产品——白色卡片、圆角输入框、蓝色主按钮，甚至还有个一本正经的品牌名"星云通行证"。<br>
+但在它的内部，藏着一堆反人类的隐藏规则，专治各种不服。<br>
 
-部署一个 TKR，把网址丢到群里，看着朋友们从"这不就是个普通注册页吗"，一步步滑向"我他妈到底哪里做错了"。
+部署一个 TKR，把网址丢到群里，看着朋友们从"这不就是个普通注册页吗"，一步步滑向"我他妈到底哪里做错了"。<br>
 
 **这不是一个正经项目。请勿用于生产环境。**
 
@@ -47,22 +47,27 @@
 
 ## 📁 项目结构
 
+```
+
 TortureKingRegister/
-index.php          首页（一本正经的门户落地页）
-register.php       注册页（地狱入口）
-login.php          登录页（死胡同入口）
-secondary.php      二次验证死胡同
-center.php         用户中心（伪装成待开发的仪表盘）
-logout.php         退出登录
-admin_login.php    管理员登录
-admin.php          管理后台（用户管理 + 系统设置）
-docs.php           文档中心（剧透攻略）
-captcha.js         全站统一验证码逻辑
-functions.php      公共函数 / 配置
-style.css          全站样式
-data/
-users.json     用户数据
-settings.json  系统配置
+├── index.php          首页（一本正经的门户落地页）
+├── register.php       注册页（地狱入口）
+├── login.php          登录页（死胡同入口）
+├── secondary.php      二次验证死胡同
+├── center.php         用户中心（伪装成待开发的仪表盘）
+├── logout.php         退出登录
+├── admin_login.php    管理员登录
+├── admin.php          管理后台（用户管理 + 系统设置）
+├── docs.php           文档中心（剧透攻略）
+├── captcha.js         全站统一验证码逻辑
+├── functions.php      公共函数 / 配置
+├── style.css          全站样式
+├── add_docs_nav.sh    给导航栏批量添加"文档中心"入口的脚本
+└── data/
+├── users.json     用户数据（故意明文存储）
+└── settings.json  系统配置
+
+```
 
 ---
 
@@ -71,13 +76,15 @@ settings.json  系统配置
 ### 环境要求
 
 - PHP 7.4+（推荐 8.0+）
-- data 目录需有写权限
+- `data` 目录需有写权限
 - 不需要数据库，用 JSON 存数据
 
 ### 部署步骤
 
 1. 把代码上传到网站根目录（或子目录）。
-2. 给 data 目录755或777权限：
+2. 给 `data` 目录写权限：
+   ```bash
+   chmod -R 755 /data
 3. 访问 http://你的域名/index.php。
 4. 首次访问会自动生成 data/users.json 和 data/settings.json。
 
@@ -85,25 +92,27 @@ settings.json  系统配置
 
 写死在 functions.php 里：
 
-php
+```php
 define('ADMIN_USERNAME', 'admin');
 define('ADMIN_PASSWORD', 'admin123');
+```
 
-管理后台：admin_login.php
+管理后台：/admin_login.php
 
 ---
 
 ⚙️ 系统设置
 
-进入管理后台 → 系统设置 → 修改"系统名称"，全站（首页 / 注册 / 登录 / 用户中心 / 后台）的品牌名会同步更新。
+进入管理后台 → 系统设置 → 修改"系统名称"后<br>
+全站（首页 / 注册 / 登录 / 用户中心 / 后台）的品牌名会同步更新。
 
-管理员账号密码需直接编辑 functions.php 顶部两行常量。
+修改管理员账号密码需直接编辑 functions.php 顶部两行常量。
 
 ---
 
 🎭 规则说明（⚠️ 组织者向，请勿告知你的用户）
 
-如果你想给用户保留游戏乐趣，不要把这些告诉他们，让他们自己来 docs.php 看。
+如果你想给用户保留游戏乐趣，请告诉他们不要查看文档文件或直接删除根目录下的 docs.php。
 
 1. 用户名 < 10 位 → 假占用
 
@@ -115,24 +124,24 @@ define('ADMIN_PASSWORD', 'admin123');
 
 3. 性别必填陷阱（包含即拦截）
 
-· 单选"男" / "女" → 永远提示"该性别已被占用，请重新选择"
-· 选"其他"手动输入时，只要包含下列任意词（大小写不敏感）就拦：
-  · 男 女 男性 女性 男生 女生 男人 女人 男孩 女孩 男孩子 女孩子
-  · 男的 女的 爷们 娘们 妹子 汉子 公 母 雄 雌 公的 母的
-  · male female man woman boy girl guy gal
-  · ♂ ♀ ⚧
-  · 跨性别 跨性别男性 跨性别女性 跨性别男 跨性别女 跨性别者
-  · trans transgender transman transwoman
-  · 无性 无性恋 无性别 中性 中性人 双性 双性人 间性
-  · 变性 变性人 变性者 非二元 非二元性别 非男非女
-  · agender nonbinary non-binary intersex asexual
-  · 沃尔玛购物袋 武装直升机 不男不女 保密
-  · 任何之前用户注册时填过的自定义性别
-· 连 男♂、我是男生、transman_007、woman、command 都会被拦。
+· 单选"男" / "女" → 永远提示"该性别已被占用，请重新选择"<br>
+· 选"其他"手动输入时，只要包含下列任意词（大小写不敏感）就拦：<br>
+  · 男 女 男性 女性 男生 女生 男人 女人 男孩 女孩 男孩子 女孩子<br>
+  · 男的 女的 爷们 娘们 妹子 汉子 公 母 雄 雌 公的 母的<br>
+  · male female man woman boy girl guy gal<br>
+  · ♂ ♀ ⚧<br>
+  · 跨性别 跨性别男性 跨性别女性 跨性别男 跨性别女 跨性别者<br>
+  · trans transgender transman transwoman<br>
+  · 无性 无性恋 无性别 中性 中性人 双性 双性人 间性<br>
+  · 变性 变性人 变性者 非二元 非二元性别 非男非女<br>
+  · agender nonbinary non-binary intersex asexual<br>
+  · 沃尔玛购物袋 武装直升机 不男不女 保密<br>
+  · 任何之前用户注册时填过的自定义性别<br>
+· 连 男♂、我是男孩子、transman_007、woman、command 都会被拦。
 
 4. 密码第一次必失败（鬼打墙）
 
-· 第 1 次 点击注册：无论密码对错，都提示"两次输入的密码不一致"，并清空密码框
+· 第 1 次 点击注册：无论密码对错，都提示"两次输入的密码不一致"，并清空密码框<br>
 · 第 2 次及以后：真检查，一致才通过
 
 5. 密码重名
@@ -141,23 +150,24 @@ define('ADMIN_PASSWORD', 'admin123');
 
 6. 验证码敏感词
 
-验证码字符含 9 1 7 8 c n m j b 3（含大写）时，输入即提示"敏感词"：
+验证码字符含 9 1 7 8 3 c n m j b（含大写）时，输入即提示"敏感词"：
 
-· 首次进入页面：100% 出现敏感字符
-· 刷新：70% 概率仍含敏感字符
+· 首次进入页面：100% 出现敏感字符<br>
+· 刷新：70% 概率仍含敏感字符<br>
 · 刷新 > 20 次：保底，之后永远是正常字符
 
 7. 人机验证 10 秒
 
-所有字段填完后，后台静默 10 秒倒计时，期间注册按钮不可点。10 秒内修改任何字段，倒计时重置。
+所有字段填完后，后台静默 10 秒倒计时，期间注册按钮不可点。<br>
+10 秒内修改任何字段，倒计时重置。
 
 8. 邮箱强度提示
 
-邮箱强度分弱/中/强，只有"强"才不再弹要求提示。达到"强"需 4 项全满足：
+邮箱强度分弱/中/强，只有"强"才不再弹要求提示。达到"强"需 4 项全满足：<br>
 
-· @ 前部分 ≥ 6 位
-· 含字母
-· 含数字
+· @ 前部分 ≥ 6 位<br>
+· 含字母<br>
+· 含数字<br>
 · 含特殊字符
 
 9. 登录二次验证死胡同
@@ -169,9 +179,11 @@ define('ADMIN_PASSWORD', 'admin123');
 🎁 后门
 
 在注册页 URL 后加参数：
-
 例如:
-register.php?q=admin
+
+```
+http://你的域名/register.php?q=admin
+```
 
 此模式跳过所有校验，随意填写即可注册成功。只告诉你自己选定的人。
 
@@ -197,32 +209,30 @@ register.php?q=admin
 
 给用户的提示关键词
 
-"仔细看提示，尤其看红色的字。"
-"试试看把 URL 后面的参数改一下。"
-"如果你实在受不了，去看文档中心。"
-"不要小看这个页面。"
+· "仔细看提示，尤其看红色的字。"
+· "试试看把 URL 后面的参数改一下。"
+· "如果你实在受不了，去看文档中心。"
+· "不要小看这个页面。"
 
 ---
 
 🛠️ 二次开发
 
-变量 位置 作用
-$forbiddenGenders register.php（PHP 顶部） 性别黑名单
-FORBIDDEN_GENDERS register.php（JS 顶部） 前端同步黑名单
-< 10 PHP / JS 多处 用户名长度限制（默认 10）
-CAPTCHA_SAFE_THRESHOLD captcha.js 验证码保底阈值（默认 20）
+   变量                位置                  作用<br>
+$forbiddenGenders register.php（PHP 顶部） 性别黑名单<br>
+FORBIDDEN_GENDERS register.php（JS 顶部） 前端同步黑名单<br>
+< 10 PHP / JS 多处 用户名长度限制（默认 10）<br>
+CAPTCHA_SAFE_THRESHOLD captcha.js 验证码保底阈值（默认 20）<br>
 setTimeout(..., 10000) register.php JS 人机验证时长（默认 10 秒）
-
-改完直接生效，不需要重启。
 
 ---
 
 ⚠️ 免责声明
 
-本项目仅供娱乐、整蛊、教学演示使用。
-严禁用于任何真实的注册系统、生产环境、对外服务。
-明文存储密码、泄露用户隐私等设计都是故意的，请勿模仿到正经项目里。
-整蛊有度，别让朋友真的生气。
+· 本项目仅供娱乐、整蛊、教学演示使用。<br>
+· 严禁用于任何真实的注册系统、生产环境、对外服务。<br>
+· 明文存储密码、泄露用户隐私等设计都是故意的，请勿模仿到正经项目里。<br>
+· 整蛊有度，别让朋友真的生气。
 
 ---
 
@@ -234,9 +244,9 @@ MIT License。随便玩，如果 fork 了，也请开源一份让更多人受苦
 
 🌟 口号
 
-Register. If you can.
-TKR — 我们只想看你注册不了
-一次注册，终身难忘
-本系统不含任何防呆设计，但含大量防聪明设计
-Sorry, your nickname has been taken. Forever.
-折磨王注册 —— 名字只是个开始
+· Register. If you can.<br>
+· TKR — 我们只想看你注册不了<br>
+· 一次注册，终身难忘<br>
+· 本系统不含任何防呆设计，但含大量防聪明设计<br>
+· Sorry, your nickname has been taken. Forever.<br>
+· 折磨王注册 —— 名字只是个开始
