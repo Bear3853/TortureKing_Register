@@ -72,7 +72,7 @@ TortureKingRegister/
 ### 环境要求
 
 - PHP 7.4+（推荐 8.0+）
-- `data/` 目录需有写权限
+- data 目录需有写权限
 - 不需要数据库，用 JSON 存数据
 
 ### 部署步骤
@@ -171,9 +171,8 @@ define('ADMIN_PASSWORD', 'admin123');
 
 在注册页 URL 后加参数：
 
-```
-register.php?q=admin
-```
+例如:
+http://你的域名/register.php?q=admin
 
 此模式跳过所有校验，随意填写即可注册成功。只告诉你自己选定的人。
 
@@ -242,11 +241,3 @@ MIT License。随便玩，如果 fork 了，也请开源一份让更多人受苦
 · 本系统不含任何防呆设计，但含大量防聪明设计
 · Sorry, your nickname has been taken. Forever.
 · 折磨王注册 —— 名字只是个开始
-
----
-
-🌐 Language / 语言： 中文 · English
-
-```
-
-保存为 `README.md`（默认首页）。顶部和底部都放了中英文切换链接，点击可跳转到 `README.en.md`。
