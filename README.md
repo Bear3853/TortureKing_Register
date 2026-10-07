@@ -177,7 +177,6 @@ define('ADMIN_PASSWORD', 'admin123');
 🎁 后门
 
 在注册页 URL 后加参数：
-例如:
 
 ```
 http://你的域名/register.php?q=admin
