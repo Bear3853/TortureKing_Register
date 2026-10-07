@@ -48,22 +48,21 @@
 ## 📁 项目结构
 
 TortureKingRegister/
-├── index.php          首页（一本正经的门户落地页）
-├── register.php       注册页（地狱入口）
-├── login.php          登录页（死胡同入口）
-├── secondary.php      二次验证死胡同
-├── center.php         用户中心（伪装成待开发的仪表盘）
-├── logout.php         退出登录
-├── admin_login.php    管理员登录
-├── admin.php          管理后台（用户管理 + 系统设置）
-├── docs.php           文档中心（剧透攻略）
-├── captcha.js         全站统一验证码逻辑
-├── functions.php      公共函数 / 配置
-├── style.css          全站样式
-├── add_docs_nav.sh    给导航栏批量添加"文档中心"入口的脚本
-└── data/
-├── users.json     用户数据（故意明文存储）
-└── settings.json  系统配置
+index.php          首页（一本正经的门户落地页）
+register.php       注册页（地狱入口）
+login.php          登录页（死胡同入口）
+secondary.php      二次验证死胡同
+center.php         用户中心（伪装成待开发的仪表盘）
+logout.php         退出登录
+admin_login.php    管理员登录
+admin.php          管理后台（用户管理 + 系统设置）
+docs.php           文档中心（剧透攻略）
+captcha.js         全站统一验证码逻辑
+functions.php      公共函数 / 配置
+style.css          全站样式
+data/
+users.json     用户数据
+settings.json  系统配置
 
 ---
 
@@ -172,7 +171,7 @@ define('ADMIN_PASSWORD', 'admin123');
 在注册页 URL 后加参数：
 
 例如:
-http://你的域名/register.php?q=admin
+register.php?q=admin
 
 此模式跳过所有校验，随意填写即可注册成功。只告诉你自己选定的人。
 
@@ -198,10 +197,10 @@ http://你的域名/register.php?q=admin
 
 给用户的提示关键词
 
-· "仔细看提示，尤其看红色的字。"
-· "试试看把 URL 后面的参数改一下。"
-· "如果你实在受不了，去看文档中心。"
-· "不要小看这个页面。"
+"仔细看提示，尤其看红色的字。"
+"试试看把 URL 后面的参数改一下。"
+"如果你实在受不了，去看文档中心。"
+"不要小看这个页面。"
 
 ---
 
@@ -220,10 +219,10 @@ setTimeout(..., 10000) register.php JS 人机验证时长（默认 10 秒）
 
 ⚠️ 免责声明
 
-· 本项目仅供娱乐、整蛊、教学演示使用。
-· 严禁用于任何真实的注册系统、生产环境、对外服务。
-· 明文存储密码、泄露用户隐私等设计都是故意的，请勿模仿到正经项目里。
-· 整蛊有度，别让朋友真的生气。
+本项目仅供娱乐、整蛊、教学演示使用。
+严禁用于任何真实的注册系统、生产环境、对外服务。
+明文存储密码、泄露用户隐私等设计都是故意的，请勿模仿到正经项目里。
+整蛊有度，别让朋友真的生气。
 
 ---
 
@@ -235,9 +234,9 @@ MIT License。随便玩，如果 fork 了，也请开源一份让更多人受苦
 
 🌟 口号
 
-· Register. If you can.
-· TKR — 我们只想看你注册不了
-· 一次注册，终身难忘
-· 本系统不含任何防呆设计，但含大量防聪明设计
-· Sorry, your nickname has been taken. Forever.
-· 折磨王注册 —— 名字只是个开始
+Register. If you can.
+TKR — 我们只想看你注册不了
+一次注册，终身难忘
+本系统不含任何防呆设计，但含大量防聪明设计
+Sorry, your nickname has been taken. Forever.
+折磨王注册 —— 名字只是个开始
